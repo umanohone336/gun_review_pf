@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users を次に置き換える
+devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+  # 以下を追加
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root :to =>"homes#top"
