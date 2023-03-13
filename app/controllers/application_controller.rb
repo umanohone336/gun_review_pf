@@ -4,9 +4,16 @@ class ApplicationController < ActionController::Base
 # devise利用の機能（ユーザ登録、ログイン認証など）が使われる前に
 # configure_permitted_parametersメソッドが実行されます。
 
-  protected
-# privateは記述をしたコントローラ内でしか参照できません。
-# 一方、protectedは呼び出された他のコントローラからも参照することができます。
+  private
+
+  def after_sign_in_path_for(resource)
+    about_path
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
