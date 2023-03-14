@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  # 管理者側
+  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
+  # ユーザー側
   # devise_for :users を次に置き換える
-devise_for :users, controllers: {
+  devise_for :users, controllers: {
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
