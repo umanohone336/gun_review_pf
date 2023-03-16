@@ -1,20 +1,35 @@
 Rails.application.routes.draw do
-  # 管理者側
-  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+
+  # ユーザー側
+  # ゲストユーザーが削除機能を使用できないようにするには，registrations.rbを編集する必要がある。まずは，ルーティングを変更
+  # 今回はユーザーのデバイス周りのコントローラーがpublicフォルダの中にある。
+  devise_for :users, controllers: {
+    registrations: 'public/registrations',
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'
+  }
+
+# ゲストログイン機能
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #会員側
+  scope module: :public do
+    root to: "homes#top"
+    get "home/about"=>"homes#about"
+    resources :airguns, only: [:new, :index, :show]
+    
+  end
+  #管理者側
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  # ユーザー側
-  # devise_for :users を次に置き換える
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
-  # 以下を追加
-  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# namespaceでURLに/admin/が追加される。会員側と見分けをつける。
+  namespace :admin do
 
-  root :to =>"homes#top"
-  get "home/about"=>"homes#about"
+  end
+
 end
 # get 'url' => 'コントローラー名#アクション名'
   #1. ユーザーがRailsアプリケーションのURLにアクセスする

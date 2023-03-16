@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Admin.create!(
+   email: 'comando@rambo.com',
+   password: '123456',
+)
+# 管理者はあらかじめデータを登録しておき、新規登録せずにログインのみしたいため、seedファイルに初期データを格納します。
