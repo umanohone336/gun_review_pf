@@ -1,0 +1,23 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% airguns.each do |airgun| %>
+      <tr>
+        <td><%= link_to(airgun.user) do %>
+          <%= image_tag airgun.user.get_profile_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to airgun.title,airgun, class: "airgun_#{airgun.id}" %></td>
+        <td><%= airgun.body %></td>
+        <td>コメント数: <%= airgun.comments.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

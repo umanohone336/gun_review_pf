@@ -1,0 +1,16 @@
+<div class='container px-5 px-sm-0'>
+  <!--layouts/errorsというエラーメッセージを表示する部分テンプレートがあるためそれを使うことで、エラーメッセージを表示させることができます。-->
+    <%= render 'layouts/errors', obj: @airgun %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>会員情報</h2>
+      <%= render 'users/info', user: current_user %>
+      <h2 class="mt-3">New GUN</h2>
+      <%= render 'form', airgun: @airgun %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>Airguns</h2>
+      <%= render 'index', airguns: @airguns%>
+    </div>
+  </div>
+</div>
