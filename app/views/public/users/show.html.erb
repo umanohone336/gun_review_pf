@@ -1,0 +1,14 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'info', user: @user %>
+      <h2 class="mt-3">New GUN</h2>
+      <%= render 'airguns/form', airgun: @airgun %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>Guns</h2>
+      <%= render 'airguns/index',airgun: @airguns %>
+    </div>
+  </div>
+</div>

@@ -21,8 +21,11 @@ Rails.application.routes.draw do
     get "home/about"=>"homes#about"
     resources :airguns, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :comments, only: [:create, :destroy]
+  end
 
-    resources :users, only: [:index,:show,:edit,:update]
+    resources :users, only: [:index,:show,:edit,:update] do
+      get '/users/unsubscribe' => 'users#unsubscribe'
+    patch '/users/withdraw' => 'users#withdraw'
 
     get '/search', to: 'searches#search'
   end
@@ -37,7 +40,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :users, only: [:index,:show,:edit,:update]
   end
-  
+
 end
 # get 'url' => 'コントローラー名#アクション名'
 #1. ユーザーがRailsアプリケーションのURLにアクセスする
