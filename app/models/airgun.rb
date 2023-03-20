@@ -5,4 +5,5 @@ class Airgun < ApplicationRecord
   # エアガンはユーザーに属する
   belongs_to :category
   # エアガンはカテゴリに属する
+  
 end

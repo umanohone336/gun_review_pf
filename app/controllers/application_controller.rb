@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  protected
+  private
 
-  def configure_permitted_parameter
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])# sign_up時にユーザ名（+email）の操作を許可
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,keys:[:email])
   end
 # configure_permitted_parametersメソッドでは、devise_parameter_sanitizer.permitメソッドを使うことで
 # ユーザー登録(sign_up)の際に、ユーザー名(name)のデータ操作を許可しています
