@@ -26,6 +26,7 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = current_user
   end
 
   def withdraw

@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   end
 
     resources :users, only: [:index,:show,:edit,:update] do
-      get '/users/unsubscribe' => 'users#unsubscribe'
-    patch '/users/withdraw' => 'users#withdraw'
+      get '/unsubscribe' => 'users#unsubscribe'
+    patch '/withdraw' => 'users#withdraw'
 
     get '/search', to: 'searches#search'
   end
