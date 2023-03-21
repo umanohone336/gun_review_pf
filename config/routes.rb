@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :categories, only: [:index, :create, :edit, :update]
     resources :users, only: [:index,:show,:edit,:update]
+    resources :airguns, only: [:index,:show,:edit,:update]
   end
 
 end

@@ -18,8 +18,8 @@
 
   <div class="row">
     <div class="col text-center">
-      <%= link_to '退会しない', users_edit_path, class: "btn btn-primary btn-sm px-5 mr-3" %>
-      <%= link_to '退会する', users_withdraw_path, method: :patch, data: { confirm: '本気ですか？' }, class: "btn btn-danger btn-sm px-5 mr-3" %>
+      <%= link_to '退会しない', edit_user_path(@user.id), class: "btn btn-primary btn-sm px-5 mr-3" %>
+      <%= link_to '退会する', user_withdraw_path(@user.id), method: :patch, data: { confirm: '本気ですか？' }, class: "btn btn-danger btn-sm px-5 mr-3" %>
     </div>
   </div>
 </div>
