@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2023_03_20_130121) do
   create_table "airguns", force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "user_id", null: false
-    t.string "gun_name", default: "", null: false
-    t.text "gun_caption", default: "", null: false
+    t.string "gun_name", null: false
+    t.text "gun_caption", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,13 +71,6 @@ ActiveRecord::Schema.define(version: 2023_03_20_130121) do
     t.integer "user_id", null: false
     t.integer "review_id", null: false
     t.text "comment_body", default: "", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.text "review_body", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
