@@ -1,1 +1,44 @@
-index
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4><b>ジャンル一覧・追加</b></h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <%= form_with model: [:admin, @category] do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <p>
+            <b><%= f.label :"カテゴリ名" %> </b>
+            <%= f.text_field :category_name, :placeholder => "カテゴリ名" %>
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </p>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row px-5">
+　  <div class="col-md-6">
+      <table class="table text-secondary">
+        <thead>
+          <tr>
+            <th>カテゴリ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.category_name %></td>
+            <td><%= link_to "編集する", edit_admin_category_path(category.id), class:'btn btn-success' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,21 @@
-toppage
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h4>こちらは管理者側のトップページです</h4>
+      <p>管理者はユーザーの投稿内容を確認し、不適切であれば削除できます。</p>
+      <p>管理者はユーザーの登録内容を確認し不適切な投稿を行うユーザーの利用を止めることができます</p>
+      <p>管理者はカテゴリーを作ることができます。</p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'Guns',admin_airguns_path, class: "btn btn-info btn-sm btn-block mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to 'Users',admin_users_path, class: "btn btn-success btn-sm btn-block mb-3" %>
+        </div>
+        <div class="row">
+          <%= link_to 'Category',admin_categories_path, class: 'btn btn-secondary btn-sm btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

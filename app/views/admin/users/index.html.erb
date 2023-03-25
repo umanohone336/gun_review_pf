@@ -1,1 +1,32 @@
-index
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
+   <br>
+     <h4><span class="bg-light">ユーザー一覧<span></h4>
+      <table class='table'>
+       <thead class="table table-light">
+        <tr>
+          <th>ユーザーID</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+       </thead>
+         <tbody>
+           <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to admin_user_path(user.id) %></td>
+              <td><%= user.email %></td>
+              <td><% if user.is_deleted %>
+                    <div class="text-danger">退会済</div>
+                  <% else %>
+                    <div class="text-success">有効会員</div>
+                  <% end %>
+              </td>
+            </tr>
+           <% end %>
+　       </tbody>
+      </table>
+  </div>
+</div>
