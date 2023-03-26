@@ -37,9 +37,9 @@ Rails.application.routes.draw do
 # namespaceでURLに/admin/が追加される。会員側と見分けをつける。
   namespace :admin do
     root to: "homes#top"
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index,:show,:edit,:update]
-    resources :airguns, only: [:index,:show,:edit,:update]
+    resources :airguns, only: [:index,:show,:edit,:update, :destroy]
   end
 
 end

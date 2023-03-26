@@ -5,5 +5,7 @@ class Airgun < ApplicationRecord
   # エアガンはユーザーに属する
   belongs_to :category
   # エアガンはカテゴリに属する
-  
+  has_many :comments
+  validates :gun_name, presence: true
+  validates :gun_caption, presence: true
 end

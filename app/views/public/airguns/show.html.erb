@@ -2,20 +2,27 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
-      <%= render 'users/info', user: @airgun.user %>
-      <%= render 'airguns/form', airgun: @airgun_new %>
+      <%= render 'public/users/info', user: @airgun.user %>
+      <%= render 'public/airguns/form', airgun: @airgun_new %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>GUN detail</h2>
   		<table class='table'>
   		  <tr>
           <td><%= link_to(@airgun.user) do %>
-            <%= image_tag @airgun.user.get_profile_image, size:"100x100" %><br>
+            <%= image_tag @airgun.user.get_profile_image(100,100), size:"100x100" %><br>
             <%= @airgun.user.name %>
             <% end %>
           </td>
-          <td><%= link_to @airgun.title, @airgun %></td>
-          <td><%= @airgun.body %></td>
+          <td>
+            <% if @airgun.image.attached? %>
+              <%= image_tag @airgun.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image_square', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to @airgun.gun_name, @airgun %></td>
+          <td><%= @airgun.gun_caption %></td>
           <td>コメント数: <%= @airgun.comments.count %></td>
           <!--if @airgun.user == current_userでは
 もし、エアガンの投稿をしたユーザーと現在ログインしているユーザーが一致していたらという意味になります。
@@ -26,8 +33,8 @@
           <% end %>
         </tr>
       </table>
-      <%= render "comments/index", airgun: @airgun %>
-      <%= render "comments/form", airgun: @airgun, comment: @comment %>
+      <%= render "public/comments/index", airgun: @airgun %>
+      <%= render "public/comments/form", airgun: @airgun, comment: @comment %>
     </div>
   </div>
 </div>

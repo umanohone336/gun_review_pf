@@ -1,0 +1,40 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'public/users/info', user: @airgun.user %>
+      <%= render 'public/airguns/form', airgun: @airgun_new %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>GUN detail</h2>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(@airgun.user) do %>
+            <%= image_tag @airgun.user.get_profile_image(100,100), size:"100x100" %><br>
+            <%= @airgun.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <% if @airgun.image.attached? %>
+              <%= image_tag @airgun.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image_square', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to @airgun.gun_name, @airgun %></td>
+          <td><%= @airgun.gun_caption %></td>
+          <td>コメント数: <%= @airgun.comments.count %></td>
+          <!--if @airgun.user == current_userでは
+もし、エアガンの投稿をしたユーザーと現在ログインしているユーザーが一致していたらという意味になります。
+これにより他のユーザーは投稿したエアガンの編集、削除のリンクは見ることが出来なくなります。-->
+          <% if @airgun.user == current_user %>
+            <td><%= link_to 'Edit', edit_airgun_path(@airgun), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Destroy', @airgun, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+        </tr>
+      </table>
+      <%= render "public/comments/index", airgun: @airgun %>
+      <%= render "public/comments/form", airgun: @airgun, comment: @comment %>
+    </div>
+  </div>
+</div>

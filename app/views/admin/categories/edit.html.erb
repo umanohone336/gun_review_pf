@@ -1,1 +1,22 @@
-edit
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4>カテゴリ編集</h4>
+      <%= form_with model: [:admin, @category], method: :patch do |f| %>
+        <table class ="table table-borderless">
+          <tr>
+            <td>
+              <b><%= f.label :カテゴリ名 %></b>
+            </td>
+            <td>
+              <%= f.text_field :category_name %>
+            </td>
+            <td>
+              <%= f.submit '変更を保存', class: 'btn btn-success' %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

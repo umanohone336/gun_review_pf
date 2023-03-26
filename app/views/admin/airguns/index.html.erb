@@ -1,0 +1,32 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
+   <br>
+     <h4><span class="bg-light">投稿一覧<span></h4>
+      <table class='table'>
+       <thead class="table table-light">
+        <tr>
+          <th>ユーザーID</th>
+          <th>名前</th>
+          <th>Gun Name</th>
+          <th>Image</th>
+        </tr>
+       </thead>
+         <tbody>
+           <% @airguns.each do |airgun| %>
+            <tr>
+              <td><%= airgun.user.id %></td>
+              <td><%= airgun.user.name %></td>
+              <td><%= link_to airgun.gun_name,admin_airgun_path(airgun.id) %></td>
+              <td>
+                <% if airgun.image.attached? && airgun.image.variable? %>
+                  <%= image_tag airgun.image.variant(resize: "100x100") %>
+                <% else %>
+                  <%= image_tag 'no_image_square', size: "100x100" %>
+                <% end %>
+              </td>
+           <% end %>
+　       </tbody>
+      </table>
+  </div>
+</div>

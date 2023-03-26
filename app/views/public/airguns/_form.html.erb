@@ -3,12 +3,16 @@
     <%= f.file_field :image, accept: "image/*" %>
   </div>
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control airgun_title' %>
+    <%= f.label :category %>
+    <%= f.select :category_id, Category.pluck(:category_name, :id), class: 'form-control category_id' %>
   </div>
   <div class="form-group">
-    <%= f.label :opinion %>
-    <%= f.text_area :body, class: 'form-control airgun_body' %>
+    <%= f.label :gun_name %>
+    <%= f.text_field :gun_name, class: 'form-control airgun_title' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gun_caption %>
+    <%= f.text_area :gun_caption, class: 'form-control airgun_body' %>
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>

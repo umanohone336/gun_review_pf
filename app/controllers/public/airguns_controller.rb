@@ -50,7 +50,7 @@ class Public::AirgunsController < ApplicationController
   private
 
   def airgun_params
-    params.require(:airgun).permit(:gun_name, :image, :caption)
+    params.require(:airgun).permit(:gun_name, :image, :gun_caption, :category_id)
   end
 
   def ensure_correct_user

@@ -1,0 +1,10 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>編集</h1>
+  		<%= render 'layouts/errors', obj: @airgun %>
+  		<%= render 'form', airgun: @airgun %>
+  		<%= link_to 'Show', @airgun %> |
+  		<%= link_to 'Back', airguns_path, class: "back" %>
+  </div>
+</div>

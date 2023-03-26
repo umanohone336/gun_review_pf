@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:name]
-
+  validates :name, presence: true
+  validates :email, presence: true
   has_many :airguns, dependent: :destroy
   has_many :comments, dependent: :destroy
   #ユーザーは沢山のエアガンを持つ , dependent: :destroyでユーザー側が削除されたとき、エアガン側を全て削除する
