@@ -7,11 +7,6 @@ class Public::CommentsController < ApplicationController
     redirect_to request.referer
   end
 
-  def destroy
-     Comment.find_by(id: params[:id], airgun_id: params[:airgun_id]).destroy
-    redirect_to request.referer
-  end
-
 private
   def comment_params
     params.require(:comment).permit(:comment_body)

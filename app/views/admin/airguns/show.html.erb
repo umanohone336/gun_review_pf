@@ -3,7 +3,7 @@
     <div class='col-md-3'>
       <h2>User info</h2>
       <%= render 'public/users/info', user: @airgun.user %>
-      <%= render 'public/airguns/form', airgun: @airgun_new %>
+      <%#= render 'public/airguns/form', airgun: @airgun_new %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>GUN detail</h2>
@@ -27,10 +27,7 @@
           <!--if @airgun.user == current_userでは
 もし、エアガンの投稿をしたユーザーと現在ログインしているユーザーが一致していたらという意味になります。
 これにより他のユーザーは投稿したエアガンの編集、削除のリンクは見ることが出来なくなります。-->
-          <% if @airgun.user == current_user %>
-            <td><%= link_to 'Edit', edit_airgun_path(@airgun), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to 'Destroy', @airgun, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-          <% end %>
+            <td><%= link_to 'Destroy', admin_airgun_path(@airgun), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
       </table>
       <%= render "public/comments/index", airgun: @airgun %>

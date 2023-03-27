@@ -5,16 +5,17 @@ class Admin::AirgunsController < ApplicationController
   end
 
   def show
-    @airgun = User.find(params[:id])
+    @airgun = Airgun.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
-    @airgun = User.find(params[:id])
+    @airgun = Airgun.find(params[:id])
   end
 
   def update
     @airgun = Airgun.find(params[:id])
-    if @airgun.update(user_params)
+    if @airgun.update(airgun_params)
       flash[:notice] = "You have updated airgun successfully."
       redirect_to admin_airgun_path(@airgun)
     else
@@ -22,9 +23,15 @@ class Admin::AirgunsController < ApplicationController
     end
   end
 
-#   private
+  def destroy
+    @airgun = Airgun.find(params[:id])
+    @airgun.destroy
+    redirect_to admin_airguns_path, notice: "削除が完了しました。"
+  end
 
-#   def user_params
-#     params.require(:user).permit(:email, :name, :is_deleted)
-#   end
+   private
+
+   def airgun_params
+    params.require(:airgun).permit(:gun_name, :gun_caption)
+   end
 end

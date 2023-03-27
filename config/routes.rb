@@ -20,15 +20,16 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "home/about"=>"homes#about"
     resources :airguns, only: [:index,:show,:edit,:create,:destroy,:update] do
-    resources :comments, only: [:create, :destroy]
-  end
+      resources :comments, only: [:create, :destroy]
+    end
 
     resources :users, only: [:index,:show,:edit,:update] do
       get '/unsubscribe' => 'users#unsubscribe'
-    patch '/withdraw' => 'users#withdraw'
+      patch '/withdraw' => 'users#withdraw'
 
-    get '/search', to: 'searches#search'
-  end
+      # get 'public/search', to: 'searches#search'
+    end
+    get 'search', to: 'searches#search'
   end
   #管理者側
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -37,9 +38,10 @@ Rails.application.routes.draw do
 # namespaceでURLに/admin/が追加される。会員側と見分けをつける。
   namespace :admin do
     root to: "homes#top"
-    resources :categories, only: [:index, :create, :edit, :update, :destroy]
+    resources :categories, only: [:index, :create, :edit, :update]
     resources :users, only: [:index,:show,:edit,:update]
     resources :airguns, only: [:index,:show,:edit,:update, :destroy]
+    get "search" => "searches#search"
   end
 
 end

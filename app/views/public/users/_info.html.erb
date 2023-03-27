@@ -9,8 +9,9 @@
 	  <th><%= user.introduction %></th>
   </tr>
 </table>
-
-<% unless current_user.id == 1 %>
+<!--adminでsing_inしてる or userでsign_inしてるかつメルアドがnot guest user-->
+<!--if admin_signed_in? || (user_signed_in? && current_user.email != 'guest@example.com')-->
+<% if user_signed_in? && current_user.email != 'guest@example.com' %>
   <div class='row'>
     <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
       <i class="fas fa-user-cog"></i>
