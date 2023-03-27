@@ -8,6 +8,7 @@
         <tr>
           <th>ユーザーID</th>
           <th>名前</th>
+          <th>Category</th>
           <th>Gun Name</th>
           <th>Image</th>
         </tr>
@@ -17,6 +18,7 @@
             <tr>
               <td><%= airgun.user.id %></td>
               <td><%= airgun.user.name %></td>
+              <td><%= airgun.category.category_name %></td>
               <td><%= link_to airgun.gun_name,admin_airgun_path(airgun.id) %></td>
               <td>
                 <% if airgun.image.attached? && airgun.image.variable? %>
