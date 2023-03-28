@@ -1,4 +1,7 @@
-<%= form_with model: airgun, url: '/airguns',local:true do |f| %>
+
+<%= form_with model: airgun,local:true do |f| %>
+<!--id有無でpost patchを仕分けるルーティングも仕分ける。-->
+
   <div class="form-group">
     <%= f.file_field :image, accept: "image/*" %>
   </div>
@@ -17,7 +20,7 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
-  
+
 <% end %>
 <!--local:true 同期通信の関係-->
 <!--url: '/airguns'これがないと今いるページにいく。-->

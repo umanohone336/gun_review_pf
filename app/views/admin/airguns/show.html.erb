@@ -9,9 +9,10 @@
   		<h2>GUN detail</h2>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@airgun.user) do %>
-            <%= image_tag @airgun.user.get_profile_image(100,100), size:"100x100" %><br>
-            <%= @airgun.user.name %>
+          <td>
+            <%= link_to admin_user_path(@airgun.user) do %>
+              <%= image_tag @airgun.user.get_profile_image(50,50), size:"50x50" %><br>
+              <%= @airgun.user.name %>
             <% end %>
           </td>
           <td>
@@ -21,7 +22,7 @@
               <%= image_tag 'no_image_square', size: "100x100" %>
             <% end %>
           </td>
-          <td><%= link_to @airgun.gun_name, @airgun %></td>
+          <td><%= @airgun.gun_name %></td>
           <td><%= @airgun.gun_caption %></td>
           <td>コメント数: <%= @airgun.comments.count %></td>
           <!--if @airgun.user == current_userでは
@@ -30,8 +31,8 @@
             <td><%= link_to 'Destroy', admin_airgun_path(@airgun), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         </tr>
       </table>
-      <%= render "public/comments/index", airgun: @airgun %>
-      <%= render "public/comments/form", airgun: @airgun, comment: @comment %>
+      <%#= render "public/comments/index", airgun: @airgun %>
+      <%#= render "public/comments/form", airgun: @airgun, comment: @comment %>
     </div>
   </div>
 </div>
