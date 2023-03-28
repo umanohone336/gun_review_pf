@@ -38,10 +38,24 @@ class Public::SessionsController < Devise::SessionsController
     return if !@user
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     #if @user.valid_password?(params[:user][:password]) && !@user.status
-    if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted == "true"
       redirect_to new_user_registration_path
       ## 【処理内容3】falseではなくtrueだった場合にサインアップページにリダイレクトする
     end
   end
+# protected
+
+#   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+#   def reject_user
+#     @user = User.find_by(name: params[:user][:name])
+#     if @user
+#       if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
+#         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+#         redirect_to new_user_registration
+#       else
+#         flash[:notice] = "項目を入力してください"
+#       end
+#     end
+#   end
 
 end

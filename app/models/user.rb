@@ -35,6 +35,10 @@ class User < ApplicationRecord
     end
   end
 
+ # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
   # ゲストログイン機能以下を追加
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
