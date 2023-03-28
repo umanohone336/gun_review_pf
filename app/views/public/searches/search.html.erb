@@ -40,7 +40,7 @@
               <% if airgun.image.attached? && airgun.image.variable? %>
                 <%= image_tag airgun.image.variant(resize: "100x100") %>
               <% else %>
-                <%= image_tag 'no_image_square', size: "100x100" %>
+                <%= image_tag 'no_image_square.jpg', size: "100x100" %>
               <% end %>
             </td>
           <!--if airgun.image.attached?の部分は、if airgun.image.attached? && airgun.image.variable?に変更することで、
